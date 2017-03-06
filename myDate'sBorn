@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class Main {
+	
+	static int years, days, mouth;
+	static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args){
+		
+		System.out.println("Введите день, месяц и год числами:");
+		
+		days = sc.nextInt();
+		mouth = sc.nextInt();
+		years = sc.nextInt();
+		
+		switch (mouth){
+		case 1:
+		case 10: mouth = 1;break;
+		
+		case 5: mouth = 2;break;
+		case 8: mouth = 3;break;
+		
+		case 2:
+		case 3:
+		case 11: mouth = 4;break;
+		
+		case 6: mouth = 5; break;
+		case 12:
+		case 9: mouth = 6;break;
+		case 4:
+		case 7: mouth = 0;break;
+		}
+		
+		int a = ((days + mouth + chet(years))%7);
+		String monday = "";
+		switch(a){
+		case 0: monday = "суббота";break;
+		case 1: monday = "воскресение";break;
+		case 2: monday = "понедельник";break;
+		case 3: monday = "вторник";break;
+		case 4: monday = "среда";break;
+		case 5: monday = "четверг";break;
+		case 6: monday = "пятница";break;
+		}
+		System.out.println(monday);
+		
+	}
+	
+	static int chet (int a){
+		int c = 5;
+		int b = a % 100;
+		switch (a / 100){
+		case 16: c = 6;break;
+		case 17: c = 4;break;
+		case 18: c = 2;break;
+		case 19: c = 0;break;
+		case 20: c = 6;break;
+		
+		default: System.out.println("Нельзя посчитать на этот год");
+		}
+		
+		return (c + b + b / 4) % 7;
+	}
+	
+}
